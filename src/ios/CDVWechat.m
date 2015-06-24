@@ -276,7 +276,7 @@
     if ([url hasPrefix:@"http://"] || [url hasPrefix:@"https://"])
     {
         data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-    }else if([url containsString:@"temp:"]){
+    }else if([url rangeOfString:@"temp:"].location != NSNotFound){
         url =  [NSTemporaryDirectory() stringByAppendingPathComponent:[url componentsSeparatedByString:@"temp:"][1]];
         data = [NSData dataWithContentsOfFile:url];
     }
